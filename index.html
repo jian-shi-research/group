@@ -1059,8 +1059,134 @@
             font-size: 1.54rem;
         }
 
-</style>
 
+
+        /* Added media and profile styling */
+        .pi-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 0.8rem 0 2rem;
+            padding: 1.4rem;
+            background: rgba(13, 17, 23, 0.55);
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(0, 217, 255, 0.12);
+        }
+
+        .pi-photo {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 22px;
+            border: 1px solid rgba(0, 255, 170, 0.45);
+            box-shadow: 0 0 28px rgba(0, 217, 255, 0.22), 0 12px 35px rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .pi-profile-info {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .pi-profile-info p {
+            margin-bottom: 0.35rem;
+        }
+
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+            gap: 1.2rem;
+            margin-top: 1.8rem;
+        }
+
+        .media-card {
+            background: rgba(13, 17, 23, 0.62);
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(0, 217, 255, 0.1);
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .media-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 255, 170, 0.45);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.22), 0 18px 45px rgba(0, 0, 0, 0.65);
+        }
+
+        .media-card img {
+            display: block;
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            background: #05060c;
+        }
+
+        .media-card--wide img,
+        .media-card--wide video {
+            object-fit: cover;
+            object-position: center;
+            padding: 0;
+        }
+
+        .media-caption {
+            padding: 0.9rem 1rem 1rem;
+            color: var(--text);
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .media-caption span {
+            display: block;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        .group-photo-card {
+            margin: 1.4rem 0 2rem;
+            padding: 1rem;
+            background: rgba(13, 17, 23, 0.62);
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            border-radius: 18px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(0, 217, 255, 0.1);
+        }
+
+        .group-photo {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: none;
+            object-fit: contain;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .group-photo-card figcaption {
+            color: var(--text-light);
+            font-weight: 600;
+            text-align: center;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .pi-profile {
+                padding: 1rem;
+            }
+
+            .pi-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .media-card img {
+                height: 360px;
+            }
+        }
+</style>
 <!-- ===== Subtle Deep-Space Background (dim, non-intrusive) ===== -->
 <style id="space-bg-style">
   html, body { height: 100%; }
@@ -1090,7 +1216,6 @@
     #space-bg { opacity: 0.18; }
   }
 </style>
-
 <style id="panel-transparency">
   /* Make the content panels semi-transparent so the astronaut background shows through */
   main { background: transparent !important; }
@@ -1107,11 +1232,8 @@
 </style>
 </head>
 <body>
-
-  <canvas id="space-bg" aria-hidden="true"></canvas>
-  <div id="space-vignette" aria-hidden="true"></div>
-
-
+<canvas aria-hidden="true" id="space-bg"></canvas>
+<div aria-hidden="true" id="space-vignette"></div>
 <header>
 <div class="container header-content">
 <h1>Jian Shi Research Group</h1>
@@ -1136,6 +1258,10 @@
 <section id="about">
 <h2>Principal Investigator</h2>
 <h3>Academic Appointments</h3>
+<div class="appointment-item">
+<p class="appointment-year">2026-present</p>
+<p class="appointment-title">GlobalFoundries Endowed Dean’s Faculty Fellow</p>
+</div>
 <div class="appointment-item">
 <p class="appointment-year">2024–present</p>
 <p class="appointment-title">Professor, Materials Science and Engineering, Rensselaer Polytechnic Institute</p>
@@ -1194,6 +1320,13 @@
 <li>Superconducting qubits and circuit quantum electrodynamics</li>
 <li>Van der Waals epitaxy and strain engineering</li>
 </ul>
+<div aria-label="Research media gallery" class="media-gallery">
+
+
+
+
+
+<figure class="media-card media-card--wide"><img alt="Pulsed laser deposition and RHEED animation" loading="lazy" src="PLD_137_ani.gif"/><figcaption class="media-caption">Pulsed laser deposition<span>Sequential deposition in MRC 137 with RHEED monitoring</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="Pulsed laser deposition system operation video" loading="lazy" src="pld_video_gif.gif"/><figcaption class="media-caption">PLD growth in action<span>Laser ablation and in-situ RHEED</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="Pulsed laser deposition system" loading="lazy" src="PLD.png"/><figcaption class="media-caption">Pulsed laser deposition system<span>Thin-film growth platform for epitaxy and quantum materials</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="Optical spectroscopy setup" loading="lazy" src="optical%20spec.png"/><figcaption class="media-caption">Optical spectroscopy<span>Ultrafast and optical characterization capabilities</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="RPI IBM Quantum System One" loading="lazy" src="RPIIBMQuantumSystemOne.jpg"/><figcaption class="media-caption">Superconducting qubits and circuit QED<span>RPI-IBM Quantum System One and quantum computing infrastructure</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="QAOA p equals 2 MaxCut visualization on a four-node cycle" loading="lazy" src="p_2_4_vertex_gif.gif"/><figcaption class="media-caption">Quantum optimization<span>QAOA p=2 MaxCut on a four-node cycle</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="Qubit chip" loading="lazy" src="qubit chip.jpeg"/><figcaption class="media-caption">Qubit chip<span>Wafer-scale patterned superconducting qubit test structures</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="PLD in action GIF" loading="lazy" src="PLD_in_action_2.gif"/><figcaption class="media-caption">PLD in action 2</figcaption></figure><figure class="media-card media-card--wide"><img alt="Optical setup" loading="lazy" src="optical setup_2.jpeg"/><figcaption class="media-caption">Optical setup<span>Optical spectroscopy and ultrafast measurement table</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="Qubit measurement box GIF" loading="lazy" src="qubit_box.gif"/><figcaption class="media-caption">Qubit measurement box<span>For superconducting qubit and resonator</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="Spiral resonator" loading="lazy" src="spiral resonator.JPG"/><figcaption class="media-caption">Spiral resonator<span>Spiral resonator device for microwave/circuit-QED studies</span></figcaption></figure><figure class="media-card media-card--wide"><img alt="RHEED during growth" loading="lazy" src="RHEED.PNG"/><figcaption class="media-caption">RHEED during growth<span>Reflection high-energy electron diffraction during epitaxial growth</span></figcaption></figure></div>
 </div>
 <h3>Laboratory Equipment</h3>
 <div class="card">
@@ -1263,6 +1396,10 @@
 <section id="recognition">
 <h2>Recognition</h2>
 <h3>Awards and Honors</h3>
+<div class="award-item">
+<p class="award-year">2026</p>
+<p class="award-title">GlobalFoundries Endowed Dean’s Faculty Fellow</p>
+</div>
 <div class="award-item">
 <p class="award-year">2025</p>
 <p class="award-title">Rensselaer Polytechnic Institute School of Engineering Research Excellence Award</p>
@@ -2249,7 +2386,13 @@
 <h2>Jian Shi Research Group</h2>
 <div class="card">
 <h3 style="color: var(--highlight);">Principal Investigator</h3>
-<p style="color: var(--text); font-size: 1.05rem; margin-bottom: 2rem;">Jian Shi, Professor</p>
+<div class="pi-profile">
+<img alt="Jian Shi" class="pi-photo" loading="lazy" src="Jian_Shi.jpg"/>
+<div class="pi-profile-info">
+<p style="color: var(--text); font-size: 1.18rem; margin-bottom: 0.2rem;"><strong>Jian Shi, Professor</strong></p>
+<p style="color: var(--text-light); font-size: 1rem;">Department of Materials Science and Engineering, Rensselaer Polytechnic Institute</p>
+</div>
+</div>
 <h3 style="color: var(--highlight);">Current PhD Students and Postdocs</h3>
 </div>
 <div class="award-item">
@@ -2292,6 +2435,10 @@
 <p class="award-year">PhD (2023-present)</p>
 <p class="award-title">Zhihao Zhang | B.S. Materials Science and Engineering at RPI | Email: zhangz32@rpi.edu</p>
 </div>
+<figure class="group-photo-card">
+<img alt="Jian Shi Research Group summer BBQ 2025" class="group-photo" loading="lazy" src="BBQ_summer_2025.jpg"/>
+<figcaption>Jian Shi Research Group, summer BBQ 2025</figcaption>
+</figure>
 <div class="card" style="margin-top: 2rem;">
 <h3 style="color: var(--highlight); margin-top: 0;">Current Undergraduate(s)</h3>
 <p style="color: var(--text);">Paul Lea (Physics, RPI)</p>
@@ -2407,7 +2554,6 @@
 </div>
 </section>
 </main>
-
 <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
@@ -2442,8 +2588,6 @@
             });
         });
     </script>
-
-
 <script>
 (function(){
   const canvas = document.getElementById('space-bg');
@@ -2578,6 +2722,5 @@
   }
 })();
 </script>
-
 </body>
 </html>
