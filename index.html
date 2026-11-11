@@ -1252,6 +1252,7 @@
 <li><a href="#group">Research Group</a></li>
 <li><a href="#funding">Funding</a></li>
 <li><a href="#openings">Openings</a></li>
+<li><a href="MANGO_Discovery_Explorer_Figure_Sound.html">AI-AE</a></li>
 </ul>
 </nav>
 <main class="container">
@@ -2555,7 +2556,7 @@
 </main>
 <script>
         // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
